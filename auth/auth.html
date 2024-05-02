@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mật thư icon (MinhNhatPhan)</title>
+    <link rel="stylesheet" href="./auth.css">
+    <link rel="icon" type="image/x-icon" href="../img/iconography.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <form id="loginForm">
+          <h2>Đăng nhập</h2>
+          <input type="email" id="Inemail" placeholder="Nhập email">
+          <input type="password" id="Inpassword" placeholder="Nhập mật khẩu">
+          <p id="messageLog" class="message"></p>
+          <button onclick="signIn()" type="button" class="btn">Đăng nhập</button>
+          <p>Chưa có tài khoản? <a href="#" onclick="showRegisterForm()">Đăng ký</a></p>
+          <p><a href="#" onclick="showForgotPassForm()">Quên mật khẩu</a></p>
+
+          <a class="home" href="../index.html">X</a>
+        </form>
+    
+        <!-- Register Form -->
+        <form id="registerForm">
+          <h2>Đăng ký</h2>
+          <input maxlength="30" type="text" id="fullName" placeholder="Họ và tên">
+          <input type="email" id="email" placeholder="Nhập email">
+          <input type="password" id="password" placeholder="Nhập mật khẩu">
+          <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu">
+          <p id="messageReg" class="message"></p>
+          <button onclick="signUp()" type="button" class="btn">Đăng ký</button>
+          <p>Đã có tài khoản? <a href="#" onclick="showLoginForm()">Đăng nhập</a></p>
+          <a class="home" href="../index.html">X</a>
+        </form>
+
+        <!-- forgotPass Form -->
+        <form id="forgotPasswordForm">
+          <h2>Quên mật khẩu</h2>
+          <input type="email" id="forgotEmail" placeholder="Địa chỉ email">
+          <p id="messageForgot" class="message"></p>
+          <button class="btn" type="button" onclick="forgotPassword()">Đặt lại mật khẩu</button>
+          <a class="home" href="../index.html">X</a>
+        </form>        
+    
+        
+      </div>
+
+     <!-- Firebase -->
+     <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-app-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-database-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-auth-compat.js"></script>
+     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="auth.js"></script>
+</body>
+</html>

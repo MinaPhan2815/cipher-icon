@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mật thư icon (MinhNhatPhan)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="./img/iconography.png">
+
+</head>
+
+<body>
+    <header>
+        <h3>BỘ CHUYỂN ĐỔI TEXT - ICON</h3>
+        <h5>By <a href="https://www.facebook.com/MinhNhat2815" target="_blank">MinhNhatPhan</a></h5>
+    </header>
+    
+    <div class="container" id="contain">
+        <div class="top">
+            <div class="theme">
+                🔅<div class="theme-toggle">
+                    <span></span>
+                </div>☪️
+            </div>
+            <div class="">
+                <div class="dropdown">
+                    <a id="login" href="./auth/auth.html">
+                        <button id="logBtn" class="history-button">Đăng nhập</button>
+                    </a>
+                    <div class="dropdown-content" id="dropdownContent">
+                      <a href="./auth/change-password.html">Đổi mật khẩu</a>
+                      <a style="color: red;" href="#" onclick="signOut()">Đăng xuất</a>
+                    </div>
+                </div>
+                  
+                <button class="history-button" onclick="showHistory()">Gần đây</button>
+            </div>
+        </div>
+        
+        <p id="noteLabel">
+            Lưu ý: Chỉ nên dùng để giải trí - Không được sử dụng công cụ cho mục đích xấu với mọi hình thức !!! <br>
+            Trang web sẽ không chịu bất cứ trách nhiệm nào với hành vi sai phạm của người dùng.
+            <button onclick="toggleNote()">X</button>
+        </p>
+        
+        <textarea maxlength="2815" id="inputText" placeholder="Nhập văn bản..."></textarea>
+        
+        <div class="buttons">
+            <button class="button" onclick="encode()">Mã hóa</button>
+            <button class="button" onclick="decode()">Giải mã</button>
+            <button class="button" onclick="resetInput()">Đặt lại</button>
+
+            <a href="mailto:minhnhatphan2815+icontext@gmail.com">
+                <button class="button">
+                    Gửi mail phản hồi
+                </button>
+            </a>
+        </div>
+
+        <p id="alertMessage" class="alert"></p>
+
+        <textarea id="output" readonly></textarea>
+
+        <button class="copy-button" id="copyButton" onclick="copyOutput()">
+            Copy
+            <img src="./img/copy.png" alt=".">
+        </button>
+
+    </div>
+
+    <h5>&copy; Từ 16/2/2024 đến<span id="date"></span></h5>
+    <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-app-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-database-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.8.4/firebase-auth-compat.js"></script>
+     <script src="./auth/auth.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
