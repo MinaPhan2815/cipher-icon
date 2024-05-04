@@ -227,7 +227,7 @@ function showHistory() {
                 });
                 displayHistoryModal(historyList, historyData);
             } else {
-                displayHistoryModal('<li>Không có dữ liệu.</li>',[]);
+                displayHistoryModal('<li>Không có dữ liệu.</li>', []);
             }
         }, (error) => {
             console.error("Lỗi khi truy xuất lịch sử từ cơ sở dữ liệu:", error);
@@ -264,9 +264,8 @@ function displayHistoryModal(historyList, historyData) {
         </div>
     `;
     document.body.insertAdjacentHTML('beforeend', historyModal);
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
-
 
 function closeHistory() {
     const historyModal = document.querySelector('.history-modal');
@@ -285,43 +284,43 @@ document.addEventListener('click', function (event) {
 
 function addToHistory(original, result) {
     const user = firebase.auth().currentUser;
-if (user) {
-    const userId = user.uid;
-    const userHistoryRef = firebase.database().ref('users/' + userId + '/history');
-    userHistoryRef.once('value', (snapshot) => {
-        let historyData = snapshot.val() || [];
-        const newEntry = {
-            original: original,
-            result: result
-        };
+    if (user) {
+        const userId = user.uid;
+        const userHistoryRef = firebase.database().ref('users/' + userId + '/history');
+        userHistoryRef.once('value', (snapshot) => {
+            let historyData = snapshot.val() || [];
+            const newEntry = {
+                original: original,
+                result: result
+            };
 
-        let isDuplicate = false;
-        historyData.forEach(entry => {
-            if (entry.original === original && entry.result === result) {
-                isDuplicate = true;
+            let isDuplicate = false;
+            historyData.forEach(entry => {
+                if (entry.original === original && entry.result === result) {
+                    isDuplicate = true;
+                }
+            });
+
+            if (!isDuplicate) {
+                historyData.unshift(newEntry);
+                if (historyData.length > maxHistoryItems) {
+                }
+
+                userHistoryRef.set(historyData)
+                    .then(() => {
+                        console.log("Lịch sử đã được lưu vào cơ sở dữ liệu của người dùng.");
+                    })
+                    .catch((error) => {
+                        console.error("Lỗi khi lưu lịch sử vào cơ sở dữ liệu:", error);
+                    });
+            } else {
+                console.log("Mục lịch sử đã tồn tại trong cơ sở dữ liệu của người dùng.");
             }
+        }, (error) => {
+            console.error("Lỗi khi truy xuất lịch sử từ cơ sở dữ liệu:", error);
         });
-
-        if (!isDuplicate) {
-            historyData.unshift(newEntry);
-            if (historyData.length > maxHistoryItems) {
-            }
-
-            userHistoryRef.set(historyData)
-                .then(() => {
-                    console.log("Lịch sử đã được lưu vào cơ sở dữ liệu của người dùng.");
-                })
-                .catch((error) => {
-                    console.error("Lỗi khi lưu lịch sử vào cơ sở dữ liệu:", error);
-                });
-        } else {
-            console.log("Mục lịch sử đã tồn tại trong cơ sở dữ liệu của người dùng.");
-        }
-    }, (error) => {
-        console.error("Lỗi khi truy xuất lịch sử từ cơ sở dữ liệu:", error);
-    });
-}
- else {
+    }
+    else {
         const historyData = JSON.parse(localStorage.getItem('history')) || [];
         const newEntry = `<span id="input-text">${original}</span><br><span id='output-text'>${result}</span>`;
 
@@ -332,7 +331,7 @@ if (user) {
         const filteredHistory = historyData.filter(entry => entry !== newEntry);
 
         if (filteredHistory.length >= maxHistoryItems) {
-            filteredHistory.pop(); 
+            filteredHistory.pop();
         }
 
         filteredHistory.unshift(newEntry);
@@ -376,14 +375,14 @@ function clearHistory() {
         const userHistoryRef = firebase.database().ref('users/' + userId + '/history');
         userHistoryRef.once('value', (snapshot) => {
             const historyData = snapshot.val();
-            if (historyData !== null && historyData !== undefined) { 
+            if (historyData !== null && historyData !== undefined) {
                 const confirmation = confirm("Bạn có chắc chắn muốn xóa tất cả lịch sử?");
                 if (confirmation) {
                     userHistoryRef.remove()
                         .then(() => {
                             console.log("Lịch sử đã được xóa khỏi cơ sở dữ liệu của người dùng.");
                             closeHistory();
-                            showHistory(); 
+                            showHistory();
                         })
                         .catch((error) => {
                             console.error("Lỗi khi xóa lịch sử từ cơ sở dữ liệu:", error);
@@ -400,7 +399,7 @@ function clearHistory() {
         if (confirmation) {
             localStorage.removeItem('history');
             closeHistory();
-            showHistory(); 
+            showHistory();
         }
     }
 }

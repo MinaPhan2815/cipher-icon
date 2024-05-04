@@ -8,10 +8,8 @@ const firebaseApp = firebase.initializeApp({
 });
 
 const db = firebaseApp.database();
-
 const auth = firebaseApp.auth();
 
-// Sign up function
 const signUp = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -56,7 +54,6 @@ const signUp = () => {
         });
     })
     .catch((error) => {
-      console.log(error.code);
       messageReg.textContent = error.message;
     });
 }
@@ -70,7 +67,6 @@ const signIn = () => {
     .then((result) => {
       const user = result.user;
       if (user.emailVerified) {
-        console.log(result.user)
         localStorage.setItem('displayName', user.displayName);
         location.href = "../index.html";
       } else {
@@ -84,7 +80,6 @@ const signIn = () => {
       }
     })
     .catch((error) => {
-      console.error("Lỗi khi đăng nhập: ", error.message);
       messageLog.textContent = error.message;
     });
 }
@@ -113,7 +108,6 @@ const forgotPassword = () => {
        showLoginForm()
     })
     .catch((error) => {
-      console.error("Có lỗi xảy ra: ", error);
       messageForgot.textContent = error.message;
     });
 }

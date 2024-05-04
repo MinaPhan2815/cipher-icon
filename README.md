@@ -1,16 +1,16 @@
 # Text to Icon Converter
 
-This project is a simple web application that converts text input into corresponding emoji icons. It allows users to encode text into emoji icons and decode emoji icons back into text. Additionally, it provides a history feature to keep track of recent conversions.
+This project is a simple web application that converts text input into corresponding icons. It allows users to encode text into icons and decode icons back into text. Additionally, it provides a history feature to keep track of recent conversions.
 
 ## Author
 This project is developed by [MinhNhatPhan](minhnhatphan2815@gmail.com).
 
 ## Features
 
-- **Encode Text to Icons**: Users can input text, and the application will convert each character into a corresponding emoji icon.
-- **Decode Icons to Text**: Users can input emoji icons, and the application will convert them back into text.
+- **Encode Text to Icons**: Users can input text, and the application will convert each character into a corresponding icon.
+- **Decode Icons to Text**: Users can input icons, and the application will convert them back into text.
 - **User Authentication**: Allows users to sign up, sign in, sign out, and reset their passwords using Firebase Authentication.
-- **History**: The application keeps track of recent conversions, allowing users to easily access and reuse previous inputs and outputs.
+- **History**: The application keeps track of recent conversions, allowing users to easily access and reuse previous inputs and outputs. It stores data in the Firebase Realtime Database if the user is logged in; otherwise, it utilizes local storage.
 - **Dark Mode Toggle**: Users can switch between light and dark themes for better readability.
 - **Responsive Design**: Ensures the application is usable on various devices and screen sizes.
 
@@ -21,7 +21,7 @@ This project is developed by [MinhNhatPhan](minhnhatphan2815@gmail.com).
 - **Firebase Realtime Database**: Firebase Realtime Database is utilized to store conversion history data, enabling seamless synchronization across devices in real-time.
 
 ### Customize Icon Mapping
-The application utilizes an icon map that associates each character with a corresponding emoji icon. This mapping allows for seamless encoding of text inputs into emoji icons and vice versa. Below is an example snippet of the icon map used in the application
+The application utilizes an icon map that associates each character with a corresponding icon. This mapping allows for seamless encoding of text inputs into icons and vice versa. Below is an example snippet of the icon map used in the application
 
 ```javascript
 const iconMap = {
@@ -35,17 +35,17 @@ You can customize the icon mappings according to your preferences or add additio
 
 ## Usage
 
-1. Input Text: Enter the text you want to encode or the emoji icons you want to decode into the input field.
+1. Input Text: Enter the text you want to encode or the icons you want to decode into the input field.
 2. Encode/Decode: Click the corresponding button to encode or decode the input text.
 3. Copy Output: Click the "Copy" button to copy the output text.
-4. View History: Click the "History" button to view recent conversion history.
+4. View History: Click the "Recently" button to view recent conversion history.
 5. Dark Mode Toggle: Click the moon icon to switch between light and dark themes.
 
 ## How to Run
 
 1. Clone this repository to your local machine.
 2. Open the `index.html` file in your web browser.
-3. Start converting text to emoji icons and vice versa!
+3. Start converting text to icons and vice versa!
 
 ## License
 
